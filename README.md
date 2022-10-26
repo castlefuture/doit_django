@@ -8,3 +8,4 @@ doit장고 교재 실습
 
 git add .
 git commit -m "메시지"
+git push  
