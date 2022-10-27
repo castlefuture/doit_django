@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{{ post.title}} - Blog</title>
 </head>
@@ -62,6 +63,7 @@
                     <header class="mb-4">
                         <!-- Post title-->
                         <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                        <h5 class="text-muted">{{ post.hook_text }}</h5>
                         <!-- Post meta content-->
                         <div class="text-muted fst-italic mb-2">{{ post.created_at}}</div>
                         <!-- Post categories-->
@@ -80,6 +82,27 @@
                     <section class="mb-5">
                         <p class="fs-5 mb-4">{{ post.content }}</p>
                     </section>
+
+                    {% if post.file_upload %} 
+                        <a href="{{ post.file_upload.url }}" class="btn btn-outline-dark" role="button">
+                            Download :&nbsp;
+
+                            {% if post.get_file_ext == 'csv' %}
+                                <i class="bi bi-filetype-csv"></i> 
+
+                            {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                <i class="bi bi-file-earmark-excel"></i>
+
+                            {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                                <i class="bi bi-file-earmark-word"></i>
+                            {% else %}
+                                <i class="bi bi-box-arrow-down"></i>
+                            {% endif %}
+                            {{ post.get_file_name}}
+                        </a>
+                    {% endif %}
+                    
+                    <hr>
                 </article>
                 <!-- Comments section-->
                 <section class="mb-5">
@@ -93,13 +116,13 @@
                                 <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                 <div class="ms-3">
                                     <div class="fw-bold">Commenter Name</div>
-                                    If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                    숨 참고
                                     <!-- Child comment 1-->
                                     <div class="d-flex mt-4">
                                         <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                         <div class="ms-3">
                                             <div class="fw-bold">Commenter Name</div>
-                                            And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                            Love Dive
                                         </div>
                                     </div>
                                     <!-- Child comment 2-->
