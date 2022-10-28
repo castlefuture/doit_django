@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block main_area %}
-<h1>Blog 목록</h1>
+<h1>Blog 목록 {% if category %}<span class="badge badge-secondary">{{ category }}</span>{% endif %}</h1>
 <div class="row">
     <!-- Blog entries-->
     <div class="col-lg-8">
